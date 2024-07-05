@@ -5,6 +5,9 @@ import KanbanContext from "./KanbanContext";
 const App = () => {
 
 	let storedItems = JSON.parse( localStorage.getItem("kanban-items") );
+	if ( !storedItems ) {
+		storedItems = [];
+	}
 
 	const [items, setItems] = useState(storedItems);
 	const [draggedItem, setDraggedItem] = useState(null);
