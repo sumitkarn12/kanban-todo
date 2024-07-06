@@ -5,17 +5,14 @@ import KanbanContext from "./KanbanContext";
 const App = () => {
 
 	let storedItems = JSON.parse( localStorage.getItem("kanban-items") );
-	if ( !storedItems ) {
+	if ( !storedItems )
 		storedItems = [];
-	}
 
 	const [items, setItems] = useState(storedItems);
 	const [draggedItem, setDraggedItem] = useState(null);
 
 	useEffect(() => {
-        let intv = setInterval(() => {
-            localStorage.setItem( "kanban-items", JSON.stringify( items ) );
-        }, 500);
+        let intv = setInterval(() => localStorage.setItem( "kanban-items", JSON.stringify( items ) ), 500);
         return () => clearInterval( intv );
     }, [items]);
 

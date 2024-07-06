@@ -20,13 +20,8 @@
     flex-direction: column;
     gap: 16px;
 }
-.kanban__dropzone_area::-webkit-scrollbar {
-    width: 0.3rem;
-}
-.kanban__dropzone_area::-webkit-scrollbar-thumb {
-    background-color: teal;
-    border-radius: 1rem;
-}
+.kanban__dropzone_area::-webkit-scrollbar { width: 0.3rem; }
+.kanban__dropzone_area::-webkit-scrollbar-thumb { background-color: teal; border-radius: 1rem; }
 .kanban__dropzone .kanban__dropzon_addbutton {
     position: absolute;
     bottom: 0;

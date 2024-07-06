@@ -17,17 +17,10 @@ function DropZone(props) {
 		}]);
 	}
 
-	const dragEnter = ( ev ) => {
-		setActive( true );
-	}
-	const dragOver = ( ev ) => {
-		ev.preventDefault();
-		setActive( true );
-	}
-	const dragLeave = ( ev ) => {
-		setActive( false );
-	}
-	const drop = ( ev ) => {
+	const dragEnter = () => setActive( true );
+	const dragOver = ( ev ) => ev.preventDefault();
+	const dragLeave = () =>  setActive( false );
+	const drop = () => {
 		setActive( false );
 		let item = itemContext.items.filter( i => i.id === itemContext.draggedItem )[0];
 		item.status = props.name;
@@ -38,7 +31,9 @@ function DropZone(props) {
 		<div onDrop={drop} onDragEnter={dragEnter} onDragOver={dragOver} onDragLeave={dragLeave} className={(active)?"w3-teal kanban__dropzone":"kanban__dropzone"} data-name={props.name}>
 			<h1 className="w3-xlarge w3-teal w3-center w3-padding">{props.name}</h1>
 			<div className="kanban__dropzone_area">
-				{itemContext.items.filter(i => i.status === props.name).map(i => <Item key={i.id} item={i} />)}
+			{
+				itemContext.items.filter(i => i.status === props.name).map(i => <Item key={i.id} item={i} />)
+			}
 			</div>
 			{
 				props.name === "Not Started" &&  <div className="kanban__dropzon_addbutton">
